@@ -1,4 +1,4 @@
-#EXERCÍCIOS UNIX & BASH - PARTE 1
+# 1.3 - EXERCÍCIOS UNIX & BASH - PARTE 1
 
 # Exercício 1
 echo -e "\nCrie o diretorio unix_tests\n"
