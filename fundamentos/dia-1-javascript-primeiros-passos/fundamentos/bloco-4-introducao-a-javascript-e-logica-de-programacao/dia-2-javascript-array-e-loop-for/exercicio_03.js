@@ -4,5 +4,5 @@ for(let i = 0;i<numbers.length;i+=1)
 {
     sum += numbers[i];
 }
-let media = sum/numbers.length;
-console.log("Media Aritmética: " + media);
+let average = sum/numbers.length;
+console.log("Media Aritmética: " + average);
