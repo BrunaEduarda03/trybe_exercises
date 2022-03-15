@@ -1,4 +1,3 @@
-const { expect } = require('@jest/globals');
 const myRemove = require ('./myRemove.js');
 
 describe('testa a função myRemove', () =>{
