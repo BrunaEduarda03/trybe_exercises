@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PersonalInformation from './personalFieldset';
+import DataInformation from './DataFieldset';
 import './form.css'
 
 class Form extends Component {
@@ -8,46 +10,54 @@ class Form extends Component {
     this.handleChange = this.handleChange.bind(this);
 
     this.state = {
+      name: '',
       email : '',
+      age:'',
+      estadoFavorito:'',
+      presence:false,
     };
   }
 
 
-  handleChange(event) {
+  handleChange({target}) {
+    const { name } = target
+    const value = (target.type === 'checkbox') ? target.checked : target.value //para checkbox mudar o estado
     this.setState({ 
-      email:event.target.value,
-    })
+      [name]: value,  //(email,nome,...) === event.target.value
+    });
    
   }
 
   render() {
-    const { email } = this.state;
+    const { name,email, age, estadoFavorito,presence } = this.state;
     return (
       <div>
         <h1>Estados e React - Tecnologia fantástica ou reagindo a regionalismos?</h1>
         <form className="form">
-          <label htmlFor="name">
-            Nome:
-              <input id="name" name="name" type="text"/>
-          </label>
-          <label htmlFor='email'>
-            Email: 
-            <input id="email" type="email" name="name" value = { email }onChange={ this.handleChange }/>
-          </label>
-          <label htmlFor="age">
-            Idade:
-            <select id="age" name="age">
-              <option value="">Selecione</option>
-              <option value="adult">Maior que 18</option>
-              <option value="teen">Menor que 18</option>
-            </select>
-          </label>
-          <label htmlFor="info">
-            Informações:
-            <textarea>
-           
-            </textarea>
+      
+          <PersonalInformation 
+          namevalue={name} 
+          emailValue={email}
+          ageValue={age}
+          handleChange={this.handleChange} />
+          <DataInformation 
+           favoriteStateValue={estadoFavorito}
+           handleChange={this.handleChange}
+           />
+         
+         
+          
+          <label htmlFor="presente">
+            Corcordo com os termos e acordos
+            <input 
+            id = "checkbox" 
+            name='presence'
+            type="checkbox"
+            value={presence}
+            onChange={this.handleChange}
+            ></ input>
             </label>
+
       </form>
       </div>
     );
