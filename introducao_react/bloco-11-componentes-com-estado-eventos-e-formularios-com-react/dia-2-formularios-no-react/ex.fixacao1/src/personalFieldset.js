@@ -53,3 +53,4 @@ PersonalInformation.propTypes = {
   ageValue:PropTypes.string.isRequired,
 }
 export default PersonalInformation ;
+
